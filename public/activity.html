@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuantEdge - My Activity</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="floating-leaves"></div>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <span class="logo-text">QuantEdge</span>
+                <span class="logo-dot"></span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/enterprise.html">Enterprise</a></li>
+                <li><a href="/insights.html">Insights</a></li>
+                <li><a href="/about.html">About</a></li>
+                <li><a href="/careers.html">Careers</a></li>
+                <li><a href="/faq.html">FAQ</a></li>
+                <li><a href="/login.html" class="btn-nav">Sign Up / Login</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <h1>My Activity</h1>
+        <div id="activityList" class="activity-list"></div>
+        <div id="message"></div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>QuantEdge</h4>
+                    <p>AI‑driven hiring platform for modern enterprises.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="/about.html">About</a></li>
+                        <li><a href="/careers.html">Careers</a></li>
+                        <li><a href="/enterprise.html">Enterprise</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="/insights.html">Insights</a></li>
+                        <li><a href="/faq.html">FAQ</a></li>
+                        <li><a href="#">Support</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Privacy</a></li>
+                        <li><a href="#">Terms</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 QuantEdge Labs. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div id="loading-overlay" class="loading-overlay" style="display:none;">
+        <div class="spinner"></div>
+    </div>
+
+    <script src="/js/auth.js"></script>
+    <script>
+        const email = sessionStorage.getItem('userEmail');
+        if (!email) {
+            window.location.href = '/login.html';
+        } else {
+            document.getElementById('loading-overlay').style.display = 'flex';
+            fetch(`/api/user/activity?email=${encodeURIComponent(email)}`)
+                .then(res => res.json())
+                .then(data => {
+                    document.getElementById('loading-overlay').style.display = 'none';
+                    const container = document.getElementById('activityList');
+                    if (data.applications && data.applications.length > 0) {
+                        let html = '<table class="activity-table"><tr><th>Job ID</th><th>Applied On</th><th>Test Score</th><th>Status</th></tr>';
+                        data.applications.forEach(app => {
+                            const score = app.TestScore !== undefined ? app.TestScore : 'Not taken';
+                            const status = app.TestScore !== undefined ? 'Completed' : 'Pending test';
+                            html += `<tr><td>${app.JobId || 'N/A'}</td><td>${new Date(app.AppliedAt).toLocaleDateString()}</td><td>${score}</td><td>${status}</td></tr>`;
+                        });
+                        html += '</table>';
+                        container.innerHTML = html;
+                    } else {
+                        container.innerHTML = '<p>No applications found.</p>';
+                    }
+                })
+                .catch(err => {
+                    document.getElementById('loading-overlay').style.display = 'none';
+                    document.getElementById('message').innerText = 'Error loading activity.';
+                });
+        }
+
+        // Link loading overlay
+        document.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                if (this.href && !this.href.startsWith('#') && !this.href.startsWith('javascript')) {
+                    e.preventDefault();
+                    document.getElementById('loading-overlay').style.display = 'flex';
+                    setTimeout(() => { window.location.href = this.href; }, 200);
+                }
+            });
+        });
+    </script>
+    <style>
+        .activity-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            background: var(--surface);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        .activity-table th, .activity-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+        .activity-table th {
+            background: var(--primary);
+            color: white;
+        }
+        .activity-table tr:hover {
+            background: var(--bg);
+        }
+    </style>
+</body>
+</html>

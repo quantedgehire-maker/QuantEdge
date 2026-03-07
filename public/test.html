@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuantEdge - Online Test</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="floating-leaves"></div>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <span class="logo-text">QuantEdge</span>
+                <span class="logo-dot"></span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/enterprise.html">Enterprise</a></li>
+                <li><a href="/insights.html">Insights</a></li>
+                <li><a href="/about.html">About</a></li>
+                <li><a href="/careers.html">Careers</a></li>
+                <li><a href="/faq.html">FAQ</a></li>
+                <li><a href="/login.html" class="btn-nav">Sign Up / Login</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <h1>Online Test (20 MCQs, 30 minutes)</h1>
+        <div id="timer" class="timer">Time left: 30:00</div>
+        <form id="testForm">
+            <div id="questions"></div>
+            <button type="submit" class="btn btn-primary pulse" id="submitTest">Submit Test</button>
+        </form>
+        <div id="result"></div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>QuantEdge</h4>
+                    <p>AI‑driven hiring platform for modern enterprises.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="/about.html">About</a></li>
+                        <li><a href="/careers.html">Careers</a></li>
+                        <li><a href="/enterprise.html">Enterprise</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="/insights.html">Insights</a></li>
+                        <li><a href="/faq.html">FAQ</a></li>
+                        <li><a href="/support.html">Support</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="/privacy.html">Privacy</a></li>
+                        <li><a href="/terms.html">Terms</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 QuantEdge Labs. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div id="loading-overlay" class="loading-overlay" style="display:none;">
+        <div class="spinner"></div>
+    </div>
+
+    <script src="/js/timer.js"></script>
+    <script src="/js/auth.js"></script>
+    <script>
+        let questions = [];
+        let questionIndices = [];
+
+        async function loadQuestions() {
+            document.getElementById('loading-overlay').style.display = 'flex';
+            try {
+                const res = await fetch('/api/questions/random');
+                const data = await res.json();
+                questions = data.questions;
+                questionIndices = data.indices;
+                const container = document.getElementById('questions');
+                container.innerHTML = '';
+                questions.forEach(q => {
+                    const div = document.createElement('div');
+                    div.className = 'question';
+                    div.innerHTML = `
+                        <h3>${q.id}. ${q.question}</h3>
+                        ${q.options.map((opt, idx) => `
+                            <label class="option-label">
+                                <input type="radio" name="q${q.id}" value="${idx}" required>
+                                <span>${opt}</span>
+                            </label>
+                        `).join('')}
+                    `;
+                    container.appendChild(div);
+                });
+            } catch (err) {
+                alert('Failed to load questions.');
+            } finally {
+                document.getElementById('loading-overlay').style.display = 'none';
+            }
+        }
+
+        loadQuestions();
+
+        document.getElementById('testForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = sessionStorage.getItem('applyEmail');
+            const jobId = sessionStorage.getItem('applyJobId');   // ← add this line
+            if (!email) { alert('Please start application first'); window.location.href = '/careers.html'; return; }
+
+            const answers = [];
+            questions.forEach(q => {
+                const radios = document.getElementsByName(`q${q.id}`);
+                let selected = null;
+                for (let j = 0; j < radios.length; j++) {
+                    if (radios[j].checked) { selected = parseInt(radios[j].value); break; }
+                }
+                answers.push({ qid: q.id, answer: selected });
+            });
+
+            document.getElementById('loading-overlay').style.display = 'flex';
+            document.getElementById('submitTest').disabled = true;
+
+            try {
+                const res = await fetch('/api/submit-test', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, answers, indices: questionIndices, jobId })
+                });
+                const data = await res.json();
+                if (data.success) {
+                    document.getElementById('result').innerHTML = `<h2 class="result-score">Your Score: ${data.score} / 20</h2><p>Thank you for completing the test. Our team will review your application and get back to you within two weeks. You can check your email for updates.</p>`;
+                    document.getElementById('testForm').style.display = 'none';
+                     // Clear session items to prevent re-submission
+                     sessionStorage.removeItem('applyEmail');
+                     sessionStorage.removeItem('applyJobId');   // ← add this line
+                } else {
+                    alert('Submission failed: ' + data.error);
+                }
+            } catch (err) {
+                alert('Submission failed.');
+            } finally {
+                document.getElementById('loading-overlay').style.display = 'none';
+                document.getElementById('submitTest').disabled = false;
+            }
+        });
+
+        document.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                if (this.href && !this.href.startsWith('#') && !this.href.startsWith('javascript')) {
+                    e.preventDefault();
+                    document.getElementById('loading-overlay').style.display = 'flex';
+                    setTimeout(() => { window.location.href = this.href; }, 200);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

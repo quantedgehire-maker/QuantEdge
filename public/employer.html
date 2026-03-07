@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuantEdge – Employer Login</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="gradient-bg"></div>
+    <nav class="navbar glass">
+        <div class="container">
+            <div class="logo">
+                <img src="/images/company-logo.png" alt="QuantEdge" class="logo-img">
+                <span class="logo-text">QuantEdge</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/enterprise.html">Enterprise</a></li>
+                <li><a href="/insights.html">Insights</a></li>
+                <li><a href="/about.html">About</a></li>
+                <li><a href="/careers.html">Careers</a></li>
+                <li><a href="/faq.html">FAQ</a></li>
+                <li><a href="/login.html" class="btn-nav candidate">Candidate Signup</a></li>
+                <li><a href="/employer.html" class="btn-nav employer">Employer Login</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="form-page">
+        <div class="container">
+            <div class="form-card glass">
+                <h1>Employer Login</h1>
+                <p>Access your company dashboard to manage job postings and review candidates.</p>
+                <form id="employerForm">
+                    <div class="form-group">
+                        <label for="email">Work Email</label>
+                        <input type="email" id="email" placeholder="you@company.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" placeholder="••••••••" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Login</button>
+                </form>
+                <p class="form-footer">Don't have an account? <a href="#">Contact sales</a></p>
+            </div>
+        </div>
+    </main>
+
+    <footer>...</footer>
+    <div id="loading-overlay" class="loading-overlay" style="display:none;">...</div>
+    <script>
+        document.getElementById('employerForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('This is a demo. In a real system, you would be redirected to the employer dashboard.');
+        });
+        document.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                if (this.href && !this.href.startsWith('#') && !this.href.startsWith('javascript')) {
+                    e.preventDefault();
+                    document.getElementById('loading-overlay').style.display = 'flex';
+                    setTimeout(() => { window.location.href = this.href; }, 200);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

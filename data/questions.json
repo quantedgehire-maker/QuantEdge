@@ -1,0 +1,1100 @@
+[
+  {
+    "topic": "C",
+    "question": "What is the output of `int x=5; printf(\"%d\", x++);`?",
+    "options": [
+      "5",
+      "6",
+      "4",
+      "Undefined"
+    ],
+    "answer": 0
+  },
+  {
+    "topic": "C",
+    "question": "Which of the following is a valid C variable name?",
+    "options": [
+      "int",
+      "2var",
+      "_var",
+      "var-1"
+    ],
+    "answer": 2
+  },
+  {
+    "topic": "C",
+    "question": "What does `sizeof(char)` return in C?",
+    "options": [
+      "1",
+      "2",
+      "4",
+      "Depends"
+    ],
+    "answer": 0
+  },
+  {
+    "topic": "C",
+    "question": "Which header file is needed for `malloc`?",
+    "options": [
+      "stdlib.h",
+      "stdio.h",
+      "string.h",
+      "math.h"
+    ],
+    "answer": 0
+  },
+  {
+    "topic": "C",
+    "question": "What is the output of `printf(\"%d\", 10>5? 10:5);`?",
+    "options": [
+      "10",
+      "5",
+      "1",
+      "0"
+    ],
+    "answer": 0
+  },
+  {
+    "topic": "C",
+    "question": "In C, a pointer to a function is declared as:",
+    "options": [
+      "int (*ptr)()",
+      "int *ptr()",
+      "int ptr()",
+      "*int ptr()"
+    ],
+    "answer": 0
+  },
+  {
+    "topic": "C",
+    "question": "What is the value of `++i` if i=3?",
+    "options": [
+      "3",
+      "4",
+      "5",
+      "Undefined"
+    ],
+    "answer": 1
+  },
+  {
+    "topic": "C",
+    "question": "Which loop is guaranteed to execute at least once?",
+    "options": [
+      "for",
+      "while",
+      "do-while",
+      "none"
+    ],
+    "answer": 2
+  },
+  {
+    "topic": "C",
+    "question": "What is the output of `int a[5]={1,2,3,4,5}; printf(\"%d\", *(a+2));`?",
+    "options": [
+      "2",
+      "3",
+      "4",
+      "1"
+    ],
+    "answer": 1
+  },
+  {
+    "topic": "C",
+    "question": "What does the `static` keyword do inside a function?",
+    "options": [
+      "Makes variable global",
+      "Preserves value between calls",
+      "Makes function inline",
+      "None"
+    ],
+    "answer": 1
+  },
+  {
+    "topic": "C",
+    "question": "What is the result of `5 & 3` in C?",
+    "options": [
+      "1",
+      "2",
+      "3",
+      "7"
+    ],
+    "answer": 0
+  },
+  {
+    "topic": "C",
+    "question": "Which of the following is not a storage class specifier?",
+    "options": [
+      "auto",
+      "register",
+      "extern",
+      "global"
+    ],
+    "answer": 3
+  },
+  {
+    "topic": "C",
+    "question": "What is the output of `printf(\"%d\", 5<<2);`?",
+    "options": [
+      "10",
+      "20",
+      "40",
+      "80"
+    ],
+    "answer": 1
+  },
+  {
+    "topic": "C",
+    "question": "What does `strcmp()` return if two strings are equal?",
+    "options": [
+      "0",
+      "1",
+      "-1",
+      "Null"
+    ],
+    "answer": 0
+  },
+  {
+    "topic": "C",
+    "question": "Which function is used to open a file?",
+    "options": [
+      "fopen",
+      "open",
+      "file_open",
+      "openfile"
+    ],
+    "answer": 0
+  },
+  {
+    "topic": "C",
+    "question": "What is a segmentation fault?",
+    "options": [
+      "Accessing illegal memory",
+      "Dividing by zero",
+      "Compilation error",
+      "None"
+    ],
+    "answer": 0
+  },
+  {
+    "topic": "C",
+    "question": "What is the size of `int *` on a 64-bit system?",
+    "options": [
+      "4",
+      "8",
+      "2",
+      "Depends"
+    ],
+    "answer": 1
+  },
+  {
+    "topic": "C",
+    "question": "Which of these is a logical operator?",
+    "options": [
+      "&&",
+      "&",
+      "|",
+      "^"
+    ],
+    "answer": 0
+  },
+  {
+    "topic": "C",
+    "question": "What is the output of `printf(\"%c\", 65);`?",
+    "options": [
+      "A",
+      "65",
+      "65",
+      "Error"
+    ],
+    "answer": 0
+  },
+  {
+    "topic": "C",
+    "question": "What does `free()` do?",
+    "options": [
+      "Deallocates memory",
+      "Frees a variable",
+      "Terminates program",
+      "None"
+    ],
+    "answer": 0
+  },
+  {
+    "topic": "C",
+    "question": "What is the use of `#define`?",
+    "options": [
+      "Macro definition",
+      "Header file",
+      "Comment",
+      "None"
+    ],
+    "answer": 0
+  },
+  {
+    "topic": "C",
+    "question": "What is the output of `int a=5, b=10; printf(\"%d\", a>b? a:b);`?",
+    "options": [
+      "5",
+      "10",
+      "15",
+      "Error"
+    ],
+    "answer": 1
+  },
+  {
+    "topic": "C",
+    "question": "Which of the following is a bitwise operator?",
+    "options": [
+      "&",
+      "&&",
+      "||",
+      "!"
+    ],
+    "answer": 0
+  },
+  {
+    "topic": "C",
+    "question": "What is a null pointer?",
+    "options": [
+      "Pointer to 0",
+      "Pointer to NULL",
+      "Pointer to void",
+      "All of above"
+    ],
+    "answer": 1
+  },
+  {
+    "topic": "C",
+    "question": "What does the `->` operator do?",
+    "options": [
+      "Member access via pointer",
+      "Dereference",
+      "Address-of",
+      "None"
+    ],
+    "answer": 0
+  },
+  {
+    "topic": "C++",
+    "question": "What is a class in C++?",
+    "options": [
+      "User-defined type",
+      "Built-in type",
+      "Function",
+      "None"
+    ],
+    "answer": 0
+  },
+  {
+    "topic": "C++",
+    "question": "Which of the following is a valid inheritance type?",
+    "options": [
+      "public",
+      "private",
+      "protected",
+      "All"
+    ],
+    "answer": 3
+  },
+  {
+    "topic": "C++",
+    "question": "What is a virtual function?",
+    "options": [
+      "Overridden in derived class",
+      "Cannot be overridden",
+      "Static function",
+      "None"
+    ],
+    "answer": 0
+  },
+  {
+    "topic": "C++",
+    "question": "What is the output of `cout << (5 + 2);`?",
+    "options": [
+      "5+2",
+      "7",
+      "52",
+      "Error"
+    ],
+    "answer": 1
+  },
+  {
+    "topic": "C++",
+    "question": "Which keyword is used to handle exceptions?",
+    "options": [
+      "try",
+      "catch",
+      "throw",
+      "All"
+    ],
+    "answer": 3
+  },
+  {
+    "topic": "C++",
+    "question": "What is a constructor?",
+    "options": [
+      "Initializes object",
+      "Destroys object",
+      "Copies object",
+      "None"
+    ],
+    "answer": 0
+  },
+  {
+    "topic": "C++",
+    "question": "What is a destructor?",
+    "options": [
+      "~classname()",
+      "classname()",
+      "!classname()",
+      "None"
+    ],
+    "answer": 0
+  },
+  {
+    "topic": "C++",
+    "question": "What is `this` pointer?",
+    "options": [
+      "Points to current object",
+      "Points to base class",
+      "Points to derived class",
+      "None"
+    ],
+    "answer": 0
+  },
+  {
+    "topic": "C++",
+    "question": "What is function overloading?",
+    "options": [
+      "Same name, different parameters",
+      "Same name, same parameters",
+      "Different name",
+      "None"
+    ],
+    "answer": 0
+  },
+  {
+    "topic": "C++",
+    "question": "What is operator overloading?",
+    "options": [
+      "Define custom behavior for operators",
+      "Overload functions",
+      "Both",
+      "None"
+    ],
+    "answer": 0
+  },
+  {
+    "topic": "C++",
+    "question": "What is a template?",
+    "options": [
+      "Generic programming",
+      "Class",
+      "Function",
+      "None"
+    ],
+    "answer": 0
+  },
+  {
+    "topic": "C++",
+    "question": "What is STL?",
+    "options": [
+      "Standard Template Library",
+      "Standard Type Library",
+      "Simple Template Library",
+      "None"
+    ],
+    "answer": 0
+  },
+  {
+    "topic": "C++",
+    "question": "What is a namespace?",
+    "options": [
+      "Container for identifiers",
+      "Class",
+      "Function",
+      "None"
+    ],
+    "answer": 0
+  },
+  {
+    "topic": "C++",
+    "question": "What is the output of `int i=0; cout << i++;`?",
+    "options": [
+      "0",
+      "1",
+      "2",
+      "Error"
+    ],
+    "answer": 0
+  },
+  {
+    "topic": "C++",
+    "question": "What is the output of `int i=0; cout << ++i;`?",
+    "options": [
+      "0",
+      "1",
+      "2",
+      "Error"
+    ],
+    "answer": 1
+  },
+  {
+    "topic": "C++",
+    "question": "What is a friend function?",
+    "options": [
+      "Can access private members",
+      "Friend of class",
+      "Global function",
+      "All"
+    ],
+    "answer": 0
+  },
+  {
+    "topic": "C++",
+    "question": "What is polymorphism?",
+    "options": [
+      "Many forms",
+      "One form",
+      "Inheritance",
+      "Encapsulation"
+    ],
+    "answer": 0
+  },
+  {
+    "topic": "C++",
+    "question": "What is inheritance?",
+    "options": [
+      "Deriving from base class",
+      "Containership",
+      "Polymorphism",
+      "None"
+    ],
+    "answer": 0
+  },
+  {
+    "topic": "C++",
+    "question": "What is encapsulation?",
+    "options": [
+      "Binding data and methods",
+      "Hiding data",
+      "Both",
+      "None"
+    ],
+    "answer": 2
+  },
+  {
+    "topic": "C++",
+    "question": "What is abstraction?",
+    "options": [
+      "Hiding complexity",
+      "Showing details",
+      "Both",
+      "None"
+    ],
+    "answer": 0
+  },
+  {
+    "topic": "C++",
+    "question": "What is a pure virtual function?",
+    "options": [
+      "Virtual function with =0",
+      "Virtual function with body",
+      "Normal function",
+      "None"
+    ],
+    "answer": 0
+  },
+  {
+    "topic": "C++",
+    "question": "What is an abstract class?",
+    "options": [
+      "Class with pure virtual function",
+      "Class with virtual function",
+      "Normal class",
+      "None"
+    ],
+    "answer": 0
+  },
+  {
+    "topic": "C++",
+    "question": "What is multiple inheritance?",
+    "options": [
+      "Derived from more than one base",
+      "Derived from one base",
+      "Both",
+      "None"
+    ],
+    "answer": 0
+  },
+  {
+    "topic": "C++",
+    "question": "What is a virtual destructor?",
+    "options": [
+      "Ensures proper cleanup of derived",
+      "Destroys virtual function",
+      "None"
+    ],
+    "answer": 0
+  },
+  {
+    "topic": "C++",
+    "question": "What is a reference variable?",
+    "options": [
+      "Alias to another variable",
+      "Pointer",
+      "Constant",
+      "None"
+    ],
+    "answer": 0
+  },
+  {
+    "topic": "CA",
+    "question": "What does CPU stand for?",
+    "options": [
+      "Central Processing Unit",
+      "Computer Personal Unit",
+      "Central Program Unit",
+      "None"
+    ],
+    "answer": 0
+  },
+  {
+    "topic": "CA",
+    "question": "What is the function of ALU?",
+    "options": [
+      "Arithmetic logic",
+      "Memory access",
+      "Control flow",
+      "None"
+    ],
+    "answer": 0
+  },
+  {
+    "topic": "CA",
+    "question": "What is cache memory?",
+    "options": [
+      "Fast memory",
+      "Slow memory",
+      "Permanent memory",
+      "None"
+    ],
+    "answer": 0
+  },
+  {
+    "topic": "CA",
+    "question": "What is RAM?",
+    "options": [
+      "Random Access Memory",
+      "Read Only Memory",
+      "Run-time Memory",
+      "None"
+    ],
+    "answer": 0
+  },
+  {
+    "topic": "CA",
+    "question": "What is ROM?",
+    "options": [
+      "Read Only Memory",
+      "Random Access Memory",
+      "Read Only Module",
+      "None"
+    ],
+    "answer": 0
+  },
+  {
+    "topic": "CA",
+    "question": "What is pipelining?",
+    "options": [
+      "Overlapping instructions",
+      "Sequential execution",
+      "Parallel processing",
+      "None"
+    ],
+    "answer": 0
+  },
+  {
+    "topic": "CA",
+    "question": "What is a register?",
+    "options": [
+      "Small storage in CPU",
+      "Large storage in RAM",
+      "Disk storage",
+      "None"
+    ],
+    "answer": 0
+  },
+  {
+    "topic": "CA",
+    "question": "What is a bus?",
+    "options": [
+      "Communication pathway",
+      "Power supply",
+      "Cooling system",
+      "None"
+    ],
+    "answer": 0
+  },
+  {
+    "topic": "CA",
+    "question": "What is clock speed measured in?",
+    "options": [
+      "Hz",
+      "Bytes",
+      "Bits",
+      "Volts"
+    ],
+    "answer": 0
+  },
+  {
+    "topic": "CA",
+    "question": "What is the von Neumann architecture?",
+    "options": [
+      "Stored-program concept",
+      "Harvard architecture",
+      "RISC",
+      "CISC"
+    ],
+    "answer": 0
+  },
+  {
+    "topic": "CA",
+    "question": "What is the difference between RISC and CISC?",
+    "options": [
+      "Instruction set complexity",
+      "Memory size",
+      "Speed",
+      "None"
+    ],
+    "answer": 0
+  },
+  {
+    "topic": "CA",
+    "question": "What is a microinstruction?",
+    "options": [
+      "Low-level control signal",
+      "High-level language",
+      "Assembly",
+      "None"
+    ],
+    "answer": 0
+  },
+  {
+    "topic": "CA",
+    "question": "What is an interrupt?",
+    "options": [
+      "Signal to CPU",
+      "Memory request",
+      "I/O operation",
+      "None"
+    ],
+    "answer": 0
+  },
+  {
+    "topic": "CA",
+    "question": "What is DMA?",
+    "options": [
+      "Direct Memory Access",
+      "Dynamic Memory Allocation",
+      "Direct Memory Address",
+      "None"
+    ],
+    "answer": 0
+  },
+  {
+    "topic": "CA",
+    "question": "What is a cache hit?",
+    "options": [
+      "Data found in cache",
+      "Data not in cache",
+      "Cache full",
+      "None"
+    ],
+    "answer": 0
+  },
+  {
+    "topic": "CA",
+    "question": "What is a cache miss?",
+    "options": [
+      "Data not in cache",
+      "Data in cache",
+      "Cache empty",
+      "None"
+    ],
+    "answer": 0
+  },
+  {
+    "topic": "CA",
+    "question": "What is virtual memory?",
+    "options": [
+      "Using disk as RAM",
+      "Extra RAM",
+      "CPU cache",
+      "None"
+    ],
+    "answer": 0
+  },
+  {
+    "topic": "CA",
+    "question": "What is paging?",
+    "options": [
+      "Memory management scheme",
+      "Page printing",
+      "Page file",
+      "None"
+    ],
+    "answer": 0
+  },
+  {
+    "topic": "CA",
+    "question": "What is segmentation?",
+    "options": [
+      "Memory division into segments",
+      "Data structure",
+      "Paging",
+      "None"
+    ],
+    "answer": 0
+  },
+  {
+    "topic": "CA",
+    "question": "What is a stack pointer?",
+    "options": [
+      "Points to top of stack",
+      "Points to base of stack",
+      "General register",
+      "None"
+    ],
+    "answer": 0
+  },
+  {
+    "topic": "CA",
+    "question": "What is a program counter?",
+    "options": [
+      "Points to next instruction",
+      "Points to current instruction",
+      "Counts programs",
+      "None"
+    ],
+    "answer": 0
+  },
+  {
+    "topic": "CA",
+    "question": "What is a pipeline hazard?",
+    "options": [
+      "Stall in pipeline",
+      "Data hazard",
+      "Control hazard",
+      "All"
+    ],
+    "answer": 3
+  },
+  {
+    "topic": "CA",
+    "question": "What is a branch predictor?",
+    "options": [
+      "Predicts branch outcome",
+      "Executes branch",
+      "None"
+    ],
+    "answer": 0
+  },
+  {
+    "topic": "CA",
+    "question": "What is superscalar?",
+    "options": [
+      "Multiple instructions per cycle",
+      "Single instruction per cycle",
+      "Multiple cores",
+      "None"
+    ],
+    "answer": 0
+  },
+  {
+    "topic": "CA",
+    "question": "What is the fetch-execute cycle?",
+    "options": [
+      "Fetch instruction, execute it",
+      "Execute then fetch",
+      "Fetch data only",
+      "None"
+    ],
+    "answer": 0
+  },
+  {
+    "topic": "OS",
+    "question": "What is an operating system?",
+    "options": [
+      "Interface between user and hardware",
+      "Application software",
+      "System software",
+      "Both A and C"
+    ],
+    "answer": 3
+  },
+  {
+    "topic": "OS",
+    "question": "What is a process?",
+    "options": [
+      "Program in execution",
+      "Program on disk",
+      "Thread",
+      "None"
+    ],
+    "answer": 0
+  },
+  {
+    "topic": "OS",
+    "question": "What is a thread?",
+    "options": [
+      "Lightweight process",
+      "Process",
+      "Program",
+      "None"
+    ],
+    "answer": 0
+  },
+  {
+    "topic": "OS",
+    "question": "What is deadlock?",
+    "options": [
+      "Processes waiting indefinitely",
+      "Processes running fast",
+      "Process terminated",
+      "None"
+    ],
+    "answer": 0
+  },
+  {
+    "topic": "OS",
+    "question": "What is a semaphore?",
+    "options": [
+      "Synchronization tool",
+      "Memory management",
+      "Process scheduler",
+      "None"
+    ],
+    "answer": 0
+  },
+  {
+    "topic": "OS",
+    "question": "What is a mutex?",
+    "options": [
+      "Mutual exclusion",
+      "Semaphore",
+      "Lock",
+      "Both A and C"
+    ],
+    "answer": 3
+  },
+  {
+    "topic": "OS",
+    "question": "What is virtual memory?",
+    "options": [
+      "Illusion of more memory",
+      "Actual RAM",
+      "Cache",
+      "None"
+    ],
+    "answer": 0
+  },
+  {
+    "topic": "OS",
+    "question": "What is paging?",
+    "options": [
+      "Memory allocation",
+      "Process scheduling",
+      "I/O management",
+      "None"
+    ],
+    "answer": 0
+  },
+  {
+    "topic": "OS",
+    "question": "What is segmentation?",
+    "options": [
+      "Divide memory into segments",
+      "Paging",
+      "Thread",
+      "None"
+    ],
+    "answer": 0
+  },
+  {
+    "topic": "OS",
+    "question": "What is thrashing?",
+    "options": [
+      "Excessive paging",
+      "Process termination",
+      "Deadlock",
+      "None"
+    ],
+    "answer": 0
+  },
+  {
+    "topic": "OS",
+    "question": "What is a system call?",
+    "options": [
+      "Request to OS",
+      "Function call",
+      "Interrupt",
+      "None"
+    ],
+    "answer": 0
+  },
+  {
+    "topic": "OS",
+    "question": "What is a shell?",
+    "options": [
+      "Command interpreter",
+      "Kernel",
+      "Application",
+      "None"
+    ],
+    "answer": 0
+  },
+  {
+    "topic": "OS",
+    "question": "What is a kernel?",
+    "options": [
+      "Core of OS",
+      "Shell",
+      "Application",
+      "None"
+    ],
+    "answer": 0
+  },
+  {
+    "topic": "OS",
+    "question": "What is a file system?",
+    "options": [
+      "Manages files",
+      "Manages memory",
+      "Manages processes",
+      "None"
+    ],
+    "answer": 0
+  },
+  {
+    "topic": "OS",
+    "question": "What is a directory?",
+    "options": [
+      "Folder",
+      "File",
+      "Link",
+      "None"
+    ],
+    "answer": 0
+  },
+  {
+    "topic": "OS",
+    "question": "What is a socket?",
+    "options": [
+      "Network endpoint",
+      "File descriptor",
+      "Process",
+      "None"
+    ],
+    "answer": 0
+  },
+  {
+    "topic": "OS",
+    "question": "What is a pipe?",
+    "options": [
+      "Inter-process communication",
+      "File",
+      "Device",
+      "None"
+    ],
+    "answer": 0
+  },
+  {
+    "topic": "OS",
+    "question": "What is a signal?",
+    "options": [
+      "Notification to process",
+      "Hardware interrupt",
+      "Software interrupt",
+      "All"
+    ],
+    "answer": 3
+  },
+  {
+    "topic": "OS",
+    "question": "What is a context switch?",
+    "options": [
+      "Switching between processes",
+      "Switching between threads",
+      "Saving state",
+      "All"
+    ],
+    "answer": 3
+  },
+  {
+    "topic": "OS",
+    "question": "What is scheduling?",
+    "options": [
+      "Allocating CPU",
+      "Allocating memory",
+      "I/O management",
+      "None"
+    ],
+    "answer": 0
+  },
+  {
+    "topic": "OS",
+    "question": "What is FCFS?",
+    "options": [
+      "First come first serve",
+      "First class first serve",
+      "Fast CPU first",
+      "None"
+    ],
+    "answer": 0
+  },
+  {
+    "topic": "OS",
+    "question": "What is SJF?",
+    "options": [
+      "Shortest job first",
+      "Shortest job fast",
+      "Simple job first",
+      "None"
+    ],
+    "answer": 0
+  },
+  {
+    "topic": "OS",
+    "question": "What is Round Robin?",
+    "options": [
+      "Time-sharing scheduling",
+      "Priority scheduling",
+      "FCFS",
+      "None"
+    ],
+    "answer": 0
+  },
+  {
+    "topic": "OS",
+    "question": "What is a priority inversion?",
+    "options": [
+      "Low priority holds resource needed by high priority",
+      "High priority waits",
+      "Deadlock",
+      "None"
+    ],
+    "answer": 0
+  },
+  {
+    "topic": "OS",
+    "question": "What is a race condition?",
+    "options": [
+      "Outcome depends on timing",
+      "Race of processes",
+      "Deadlock",
+      "None"
+    ],
+    "answer": 0
+  }
+]

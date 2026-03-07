@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuantEdge - Support Center</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="floating-leaves">
+        <div class="leaf leaf1"></div>
+        <div class="leaf leaf2"></div>
+        <div class="leaf leaf3"></div>
+    </div>
+
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <span class="logo-text">QuantEdge</span>
+                <span class="logo-dot"></span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/enterprise.html">Enterprise</a></li>
+                <li><a href="/insights.html">Insights</a></li>
+                <li><a href="/about.html">About</a></li>
+                <li><a href="/careers.html">Careers</a></li>
+                <li><a href="/faq.html">FAQ</a></li>
+                <li><a href="/login.html" class="btn-nav">Sign Up / Login</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <section class="page-header privacy-header">
+            <div class="container">
+                <h1 class="float">Support Center</h1>
+                <p class="slide">We're here to help. Find answers or contact us.</p>
+                <!--<div class="header-decoration"></div>-->
+            </div>
+        </section>
+
+        <section class="privacy-content">
+            <div class="container">
+                <div class="privacy-section">
+                    <div class="section-icon"><i class="fas fa-key"></i></div>
+                    <h2>How do I reset my password?</h2>
+                    <p>Go to the login page and click "Forgot Password". You'll receive an email with instructions to reset it.</p>
+                </div>
+
+                <div class="privacy-section">
+                    <div class="section-icon"><i class="fas fa-file-upload"></i></div>
+                    <h2>I'm having trouble uploading my resume.</h2>
+                    <p>Ensure your file is PDF or DOCX and under 10MB. If the problem persists, try a different browser or clear your cache.</p>
+                </div>
+
+                <div class="privacy-section">
+                    <div class="section-icon"><i class="fas fa-edit"></i></div>
+                    <h2>Can I update my application after submitting?</h2>
+                    <p>No, applications cannot be edited once submitted. Please double-check your information before final submission.</p>
+                </div>
+
+                <div class="privacy-section">
+                    <div class="section-icon"><i class="fas fa-envelope"></i></div>
+                    <h2>How do I contact technical support?</h2>
+                    <p>Email us at <a href="mailto:support@quantedge.com">support@quantedge.com</a>. We aim to respond within 24 hours.</p>
+                </div>
+
+                <div class="privacy-section">
+                    <div class="section-icon"><i class="fas fa-question-circle"></i></div>
+                    <h2>Where can I find more FAQs?</h2>
+                    <p>Visit our <a href="/faq.html">FAQ page</a> for answers to common questions about the hiring process, tests, and more.</p>
+                </div>
+
+                <div class="privacy-section">
+                    <div class="section-icon"><i class="fas fa-clock"></i></div>
+                    <h2>What are your support hours?</h2>
+                    <p>Our support team is available Monday–Friday, 9 AM to 6 PM IST. For urgent issues, email us anytime.</p>
+                </div>
+
+                <div class="privacy-footer">
+                    <p class="last-updated"><i class="far fa-clock"></i> We typically reply within 24 hours</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>QuantEdge</h4>
+                    <p>AI‑driven hiring platform for modern enterprises.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="/about.html">About</a></li>
+                        <li><a href="/careers.html">Careers</a></li>
+                        <li><a href="/enterprise.html">Enterprise</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="/insights.html">Insights</a></li>
+                        <li><a href="/faq.html">FAQ</a></li>
+                        <li><a href="/support.html">Support</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="/privacy.html">Privacy</a></li>
+                        <li><a href="/terms.html">Terms</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 QuantEdge Labs. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div id="loading-overlay" class="loading-overlay" style="display:none;">
+        <div class="spinner"></div>
+    </div>
+
+    <script src="/js/auth.js"></script>
+    <script>
+        document.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                if (this.href && !this.href.startsWith('#') && !this.href.startsWith('javascript')) {
+                    e.preventDefault();
+                    document.getElementById('loading-overlay').style.display = 'flex';
+                    setTimeout(() => { window.location.href = this.href; }, 200);
+                }
+            });
+        });
+        document.querySelectorAll('form').forEach(form => {
+            form.addEventListener('submit', function() {
+                document.getElementById('loading-overlay').style.display = 'flex';
+            });
+        });
+    </script>
+</body>
+</html>

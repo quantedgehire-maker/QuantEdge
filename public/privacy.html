@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuantEdge - Privacy Policy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="floating-leaves">
+        <div class="leaf leaf1"></div>
+        <div class="leaf leaf2"></div>
+        <div class="leaf leaf3"></div>
+    </div>
+
+    <nav class="navbar">
+        <!-- same navbar as other pages -->
+        <div class="container">
+            <div class="logo">
+                <span class="logo-text">QuantEdge</span>
+                <span class="logo-dot"></span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/enterprise.html">Enterprise</a></li>
+                <li><a href="/insights.html">Insights</a></li>
+                <li><a href="/about.html">About</a></li>
+                <li><a href="/careers.html">Careers</a></li>
+                <li><a href="/faq.html">FAQ</a></li>
+                <li><a href="/login.html" class="btn-nav">Sign Up / Login</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Page header with decorative element -->
+        <section class="page-header privacy-header">
+            <div class="container">
+                <h1 class="float">Privacy Policy</h1>
+                <p class="slide">We value your trust and handle your data with care.</p>
+                <!--<div class="header-decoration"></div>-->
+            </div>
+        </section>
+
+        <!-- Privacy content sections -->
+        <section class="privacy-content">
+            <div class="container">
+                <div class="privacy-section">
+                    <div class="section-icon"><i class="fas fa-database"></i></div>
+                    <h2>Information We Collect</h2>
+                    <p>We collect personal information you provide when you sign up, apply for jobs, or contact us. This includes your name, email, phone number, resume, and any other information you choose to share.</p>
+                </div>
+
+                <div class="privacy-section">
+                    <div class="section-icon"><i class="fas fa-chart-line"></i></div>
+                    <h2>How We Use Your Information</h2>
+                    <p>We use your information to process job applications, improve our services, and communicate with you about opportunities. We never sell your data to third parties.</p>
+                </div>
+
+                <div class="privacy-section">
+                    <div class="section-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h2>Data Security</h2>
+                    <p>We implement industry-standard security measures to protect your data. However, no method of transmission over the internet is 100% secure.</p>
+                </div>
+
+                <div class="privacy-section">
+                    <div class="section-icon"><i class="fas fa-gavel"></i></div>
+                    <h2>Your Rights</h2>
+                    <p>You may request access, correction, or deletion of your personal data by contacting us at <a href="mailto:privacy@quantedge.com">privacy@quantedge.com</a>.</p>
+                </div>
+
+                <div class="privacy-footer">
+                    <p class="last-updated"><i class="far fa-calendar-alt"></i> Last updated: March 2026</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <!-- same footer as other pages -->
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>QuantEdge</h4>
+                    <p>AI‑driven hiring platform for modern enterprises.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="/about.html">About</a></li>
+                        <li><a href="/careers.html">Careers</a></li>
+                        <li><a href="/enterprise.html">Enterprise</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="/insights.html">Insights</a></li>
+                        <li><a href="/faq.html">FAQ</a></li>
+                        <li><a href="/support.html">Support</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="/privacy.html">Privacy</a></li>
+                        <li><a href="/terms.html">Terms</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 QuantEdge Labs. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div id="loading-overlay" class="loading-overlay" style="display:none;">
+        <div class="spinner"></div>
+    </div>
+
+    <script src="/js/auth.js"></script>
+    <script>
+        // Optional: loading overlay for links (already in auth.js, but keep for safety)
+        document.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                if (this.href && !this.href.startsWith('#') && !this.href.startsWith('javascript')) {
+                    e.preventDefault();
+                    document.getElementById('loading-overlay').style.display = 'flex';
+                    setTimeout(() => { window.location.href = this.href; }, 200);
+                }
+            });
+        });
+        document.querySelectorAll('form').forEach(form => {
+            form.addEventListener('submit', function() {
+                document.getElementById('loading-overlay').style.display = 'flex';
+            });
+        });
+    </script>
+</body>
+</html>

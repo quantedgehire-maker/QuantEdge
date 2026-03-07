@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload Resume – QuantEdge</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="gradient-bg"></div>
+    <nav class="navbar glass">...</nav>
+    <main class="form-page">
+        <div class="container">
+            <div class="form-card glass">
+                <h1>Upload Your Resume</h1>
+                <p>We support PDF and DOCX</p>
+                <form id="resumeForm" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="resume">Choose file</label>
+                        <input type="file" id="resume" name="resume" accept=".pdf,.docx" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Upload & Continue</button>
+                </form>
+            </div>
+        </div>
+    </main>
+    <script>
+        document.getElementById('resumeForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = sessionStorage.getItem('candidateEmail');
+            if (!email) { window.location.href = '/signup.html'; return; }
+            const formData = new FormData();
+            formData.append('email', email);
+            formData.append('resume', document.getElementById('resume').files[0]);
+            document.getElementById('loading-overlay').style.display = 'flex';
+            try {
+                const res = await fetch('/api/upload-resume', { method: 'POST', body: formData });
+                const data = await res.json();
+                if (data.success) window.location.href = '/profile-setup.html';
+                else alert('Error: ' + data.error);
+            } catch (err) { alert('Network error'); }
+            finally { document.getElementById('loading-overlay').style.display = 'none'; }
+        });
+    </script>
+</body>
+</html>

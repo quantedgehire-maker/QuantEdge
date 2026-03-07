@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuantEdge - Profile Setup</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="floating-leaves"></div>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <span class="logo-text">QuantEdge</span>
+                <span class="logo-dot"></span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/enterprise.html">Enterprise</a></li>
+                <li><a href="/insights.html">Insights</a></li>
+                <li><a href="/about.html">About</a></li>
+                <li><a href="/careers.html">Careers</a></li>
+                <li><a href="/faq.html">FAQ</a></li>
+                <li><a href="/login.html" class="btn-nav">Sign Up / Login</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="form-card float">
+            <h1>Complete Your Profile</h1>
+            <p>Step 2 of 3: Audio intro, location & office</p>
+            <p class="lead">Please allow microphone access (camera optional).</p>
+
+            <form id="profileForm">
+                <div class="form-group">
+                    <label><i class="fas fa-microphone"></i> 30-Second Audio Intro <span class="required">*</span></label>
+                    <div class="button-group">
+                        <button type="button" id="startAudio" class="btn btn-secondary">Start Recording</button>
+                        <button type="button" id="stopAudio" class="btn btn-secondary" disabled>Stop Recording</button>
+                    </div>
+                    <audio id="audioPreview" controls style="display:none; margin-top:1rem;"></audio>
+                    <p id="audioStatus"></p>
+                </div>
+
+                <div class="form-group">
+                    <label><i class="fas fa-camera"></i> Photo (Optional)</label>
+                    <div class="button-group">
+                        <button type="button" id="startCamera" class="btn btn-secondary">Open Camera</button>
+                        <button type="button" id="capturePhoto" class="btn btn-secondary" disabled>Capture</button>
+                    </div>
+                    <video id="cameraPreview" width="320" height="240" autoplay style="display:none; margin-top:1rem;"></video>
+                    <canvas id="photoCanvas" style="display:none;"></canvas>
+                    <img id="photoPreview" style="max-width:320px; margin-top:1rem; display:none;" />
+                    <p id="photoStatus"></p>
+                </div>
+
+                <div class="form-group">
+                    <label for="office"><i class="fas fa-building"></i> Select Office <span class="required">*</span></label>
+                    <select id="office" required>
+                        <option value="">Select</option>
+                        <option value="Bengaluru">Bengaluru</option>
+                        <option value="Hyderabad">Hyderabad</option>
+                        <option value="Delhi">Delhi</option>
+                        <option value="Mumbai">Mumbai</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label><i class="fas fa-map-pin"></i> Your Location <span class="required">*</span></label>
+                    <p id="locationStatus">Detecting location...</p>
+                    <input type="hidden" id="lat" name="lat">
+                    <input type="hidden" id="lon" name="lon">
+                </div>
+
+                <button type="submit" class="btn btn-primary pulse" id="submitProfile" disabled>Submit & Proceed to Test</button>
+            </form>
+            <div id="message"></div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>QuantEdge</h4>
+                    <p>AI‑driven hiring platform for modern enterprises.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="/about.html">About</a></li>
+                        <li><a href="/careers.html">Careers</a></li>
+                        <li><a href="/enterprise.html">Enterprise</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="/insights.html">Insights</a></li>
+                        <li><a href="/faq.html">FAQ</a></li>
+                        <li><a href="#">Support</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Privacy</a></li>
+                        <li><a href="#">Terms</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 QuantEdge Labs. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div id="loading-overlay" class="loading-overlay" style="display:none;">
+        <div class="spinner"></div>
+    </div>
+
+    <script src="/js/auth.js"></script>
+    <script>
+        let mediaRecorder, audioChunks = [], audioFile = null, photoFile = null, locationEnabled = false;
+        const email = sessionStorage.getItem('applyEmail');
+        if (!email) { alert('Please start application first'); window.location.href = '/careers.html'; }
+
+        window.addEventListener('load', function() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    pos => { document.getElementById('lat').value = pos.coords.latitude; document.getElementById('lon').value = pos.coords.longitude; document.getElementById('locationStatus').innerHTML = '<i class="fas fa-check-circle" style="color:green;"></i> Captured'; locationEnabled = true; checkForm(); },
+                    err => { document.getElementById('locationStatus').innerHTML = '<i class="fas fa-exclamation-triangle" style="color:red;"></i> Access denied'; locationEnabled = false; checkForm(); }
+                );
+            }
+        });
+
+        document.getElementById('startAudio').addEventListener('click', async () => {
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                mediaRecorder = new MediaRecorder(stream);
+                mediaRecorder.ondataavailable = e => audioChunks.push(e.data);
+                mediaRecorder.onstop = () => {
+                    audioBlob = new Blob(audioChunks, { type: 'audio/webm' });
+                    audioFile = new File([audioBlob], 'intro.webm');
+                    document.getElementById('audioPreview').src = URL.createObjectURL(audioBlob);
+                    document.getElementById('audioPreview').style.display = 'block';
+                    document.getElementById('audioStatus').innerHTML = '<i class="fas fa-check-circle"></i> Saved';
+                    stream.getTracks().forEach(t => t.stop());
+                    checkForm();
+                };
+                mediaRecorder.start();
+                document.getElementById('startAudio').disabled = true;
+                document.getElementById('stopAudio').disabled = false;
+                document.getElementById('audioStatus').innerHTML = '<i class="fas fa-spinner fa-pulse"></i> Recording...';
+                audioChunks = [];
+            } catch { alert('Microphone access required.'); }
+        });
+        document.getElementById('stopAudio').addEventListener('click', () => { mediaRecorder.stop(); document.getElementById('startAudio').disabled = false; document.getElementById('stopAudio').disabled = true; });
+
+        let cameraStream;
+        document.getElementById('startCamera').addEventListener('click', async () => {
+            try {
+                cameraStream = await navigator.mediaDevices.getUserMedia({ video: true });
+                document.getElementById('cameraPreview').srcObject = cameraStream;
+                document.getElementById('cameraPreview').style.display = 'block';
+                document.getElementById('startCamera').disabled = true;
+                document.getElementById('capturePhoto').disabled = false;
+            } catch { alert('Camera optional, you can skip.'); }
+        });
+        document.getElementById('capturePhoto').addEventListener('click', () => {
+            const video = document.getElementById('cameraPreview');
+            const canvas = document.getElementById('photoCanvas');
+            canvas.width = video.videoWidth; canvas.height = video.videoHeight;
+            canvas.getContext('2d').drawImage(video, 0, 0);
+            canvas.toBlob(blob => {
+                photoFile = new File([blob], 'photo.jpg');
+                document.getElementById('photoPreview').src = URL.createObjectURL(blob);
+                document.getElementById('photoPreview').style.display = 'block';
+                document.getElementById('photoStatus').innerHTML = '<i class="fas fa-check-circle"></i> Captured';
+                if (cameraStream) cameraStream.getTracks().forEach(t => t.stop());
+                document.getElementById('startCamera').disabled = false;
+                document.getElementById('capturePhoto').disabled = true;
+                document.getElementById('cameraPreview').style.display = 'none';
+            }, 'image/jpeg');
+        });
+
+        function checkForm() {
+            const office = document.getElementById('office').value;
+            document.getElementById('submitProfile').disabled = !(audioFile && locationEnabled && office);
+        }
+        document.getElementById('office').addEventListener('change', checkForm);
+
+        document.getElementById('profileForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            if (!audioFile || !document.getElementById('office').value || !document.getElementById('lat').value) { alert('Complete all mandatory steps'); return; }
+            document.getElementById('loading-overlay').style.display = 'flex';
+            const formData = new FormData();
+            formData.append('email', email);
+            formData.append('office', document.getElementById('office').value);
+            formData.append('lat', document.getElementById('lat').value);
+            formData.append('lon', document.getElementById('lon').value);
+            formData.append('audio', audioFile);
+            if (photoFile) formData.append('photo', photoFile);
+            try {
+                const res = await fetch('/api/application-profile', { method: 'POST', body: formData });
+                const data = await res.json();
+                if (data.success) window.location.href = '/test.html';
+                else { document.getElementById('message').innerText = data.error; document.getElementById('loading-overlay').style.display = 'none'; }
+            } catch { document.getElementById('message').innerText = 'Network error'; document.getElementById('loading-overlay').style.display = 'none'; }
+        });
+
+        document.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                if (this.href && !this.href.startsWith('#') && !this.href.startsWith('javascript')) {
+                    e.preventDefault();
+                    document.getElementById('loading-overlay').style.display = 'flex';
+                    setTimeout(() => { window.location.href = this.href; }, 200);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
