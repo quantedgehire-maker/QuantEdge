@@ -93,13 +93,23 @@ const dirs = [
   'uploads/pdfs',
   'uploads/docs',
   'uploads/audio',
-  'uploads/videos'
+  'uploads/videos',
+  'uploads/others'
 ];
+
 dirs.forEach(dir => {
-  if (!fs.existsSync(dir)) {
-    fs.mkdirSync(dir, { recursive: true });
+  const fullPath = path.join(__dirname, dir);
+  if (!fs.existsSync(fullPath)) {
+    fs.mkdirSync(fullPath, { recursive: true });
+    console.log(`✅ Created directory: ${dir}`);
   }
 });
+
+// dirs.forEach(dir => {
+//   if (!fs.existsSync(dir)) {
+//     fs.mkdirSync(dir, { recursive: true });
+//   }
+// });
 
 // Initialize Excel files
 function initExcel(filePath, headers) {
@@ -131,10 +141,11 @@ const storage = multer.diskStorage({
     let folder = 'uploads/';
     if (file.mimetype.includes('pdf')) folder += 'pdfs/';
     else if (file.mimetype.includes('word') || file.mimetype.includes('document')) folder += 'docs/';
-    else if (file.mimetype.includes('audio')) folder += 'audio/';
+    else if (file.mimetype.includes('audio')|| file.mimetype.includes('video/webm')) folder += 'audio/';
     else if (file.mimetype.includes('image')) folder += 'images/';
     else folder += 'others/';
-    cb(null, folder);
+    const uploadPath = path.join(__dirname, folder);
+    cb(null, uploadPath);
   },
   filename: (req, file, cb) => {
     const unique = Date.now() + '-' + Math.round(Math.random() * 1E9);
